@@ -152,26 +152,41 @@
 
   @media (max-width: 767px) {
     .hero-bg {
-      background-position: 70% center;
+      background-image: url('imagem-mobile.png');
+      background-position: top center;
+      background-size: cover;
     }
+    /* Gradient: keep top (subject) visible, darken bottom (text area) */
     .hero-bg::after {
       background: linear-gradient(180deg,
-        rgba(0,0,0,0.85) 0%,
-        rgba(0,0,0,0.55) 35%,
-        rgba(0,0,0,0.45) 65%,
-        rgba(0,0,0,0.85) 100%);
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0) 40%,
+        rgba(0,0,0,0.55) 55%,
+        rgba(0,0,0,0.9) 70%,
+        rgba(0,0,0,0.98) 100%);
     }
     .hero-inner {
-      padding: 32px 20px;
+      padding: 24px 20px 40px;
+      justify-content: flex-end;
       align-items: flex-start;
+      min-height: 100vh;
     }
-    .logo { width: 130px; margin-bottom: 28px; }
+    .logo {
+      width: 110px;
+      margin-bottom: 16px;
+      align-self: flex-start;
+    }
     .headline {
-      font-size: 32px;
+      font-size: 30px;
+      line-height: 1.1;
       max-width: 100%;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
-    .cta { font-size: 22px; padding: 16px 28px; }
+    .cta {
+      font-size: 22px;
+      padding: 16px 28px;
+      align-self: flex-start;
+    }
   }
 
   @media (max-width: 380px) {
