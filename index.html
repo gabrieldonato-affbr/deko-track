@@ -7,7 +7,6 @@
 <link rel="icon" href="https://dekoroleta.com/wp-content/uploads/2025/05/cropped-5-100-32x32.jpg" sizes="32x32" />
 
 <style>
-  /* Fonts */
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -22,47 +21,86 @@
     font-display: swap;
     src: url('https://dekoroleta.apostaonline.bet.br/wp-content/uploads/2025/07/Inter_28pt-Bold.woff2') format('woff2');
   }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('https://dekoroleta.apostaonline.bet.br/wp-content/uploads/2025/07/Inter_28pt-Bold.woff2') format('woff2');
+  }
 
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    background-color: #181818;
+    background-color: #000;
     font-family: 'Inter', Arial, sans-serif;
     color: #fff;
     min-height: 100vh;
+    text-transform: uppercase;
   }
   img { max-width: 100%; height: auto; display: block; }
 
-  /* Hero section */
+  /* HERO */
   .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 770px;
-    padding: 40px 16px;
-    background-image: url('https://dekoroleta.com/wp-content/uploads/2025/05/Prancheta-1.jpg');
-    background-position: center center;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('imagem-principal.png');
     background-repeat: no-repeat;
     background-size: cover;
-    gap: 24px;
+    background-position: right center;
+    z-index: 0;
+  }
+  /* Gradient overlay so the left side darkens for text legibility */
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.7) 30%,
+      rgba(0,0,0,0.25) 55%,
+      rgba(0,0,0,0) 75%);
   }
 
-  .hero .logo {
-    width: 12%;
-    max-width: 170px;
-    min-width: 110px;
-    align-self: flex-start;
-    margin-left: 5%;
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 64px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .hero .main-image {
-    width: 50%;
+  .logo {
+    width: 170px;
+    margin-bottom: 40px;
+  }
+  .logo img { width: 100%; height: auto; }
+
+  .headline {
     max-width: 640px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin: 0 0 36px 0;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
   }
-  .hero .main-image img { width: 80%; margin: 0 auto; }
+  .headline .price { color: #ff1f1f; white-space: nowrap; }
 
-  .cta-wrapper { text-align: center; }
+  /* CTA */
   .cta {
     display: inline-flex;
     align-items: center;
@@ -74,24 +112,28 @@
     font-size: 30px;
     font-weight: 600;
     text-decoration: none;
-    padding: 20px 30px;
-    border-radius: 10px;
+    padding: 20px 38px;
+    border-radius: 12px;
     line-height: 1;
+    box-shadow: 0 8px 28px rgba(255,0,0,0.35);
     animation: pulse-scale 1.5s infinite;
     transform-origin: center;
+    align-self: flex-start;
   }
   .cta svg { width: 1em; height: 1em; }
-
   @keyframes pulse-scale {
     0%   { transform: scale(1); }
-    50%  { transform: scale(1.1); }
+    50%  { transform: scale(1.05); }
     100% { transform: scale(1); }
   }
 
-  /* Footer */
+  /* FOOTER */
   footer {
-    padding: 2em 0 1em;
+    padding: 2em 16px 1em;
     text-align: center;
+    background: #000;
+    position: relative;
+    z-index: 2;
   }
   footer h2 {
     font-family: 'Inter', sans-serif;
@@ -99,50 +141,67 @@
     font-weight: 400;
     color: #535353;
     margin: 0;
+    text-transform: uppercase;
   }
 
-  /* Responsive */
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .hero {
-      min-height: 628px;
-      padding-top: 10em;
-      background-image: url('https://dekoroleta.com/wp-content/uploads/2025/05/SECAO-1-MOB.jpg');
-      background-position: top center;
-    }
-    .hero .logo { width: 162px; max-width: 162px; margin-left: 5%; }
-    .hero .main-image { width: 100%; max-width: 90%; }
+    .hero-inner { padding: 40px 32px; }
+    .headline { font-size: 44px; max-width: 540px; }
   }
 
   @media (max-width: 767px) {
-    .hero { padding-left: 5%; padding-right: 5%; }
-    .hero .logo { width: 126px; max-width: 126px; }
-    .hero .main-image { width: 100%; max-width: 100%; }
-    .hero .main-image img { width: 100%; }
-    .cta { font-size: 23px; }
+    .hero-bg {
+      background-position: 70% center;
+    }
+    .hero-bg::after {
+      background: linear-gradient(180deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.55) 35%,
+        rgba(0,0,0,0.45) 65%,
+        rgba(0,0,0,0.85) 100%);
+    }
+    .hero-inner {
+      padding: 32px 20px;
+      align-items: flex-start;
+    }
+    .logo { width: 130px; margin-bottom: 28px; }
+    .headline {
+      font-size: 32px;
+      max-width: 100%;
+      margin-bottom: 28px;
+    }
+    .cta { font-size: 22px; padding: 16px 28px; }
+  }
+
+  @media (max-width: 380px) {
+    .headline { font-size: 28px; }
+    .cta { font-size: 20px; }
   }
 </style>
 </head>
 <body>
   <section class="hero">
-    <!-- Logo Deko (mantido do original) -->
-    <div class="logo">
-      <img src="https://dekoroleta.com/wp-content/uploads/2025/05/PRINCIPAL-1024x572.png"
-           alt="Deko Roleta"
-           fetchpriority="high" decoding="async" />
-    </div>
+    <div class="hero-bg" aria-hidden="true"></div>
 
-    <!-- Imagem principal (substituída pela anexada) -->
-    <div class="main-image">
-      <img src="imagem-principal.png" alt="Imagem principal" decoding="async" />
-    </div>
+    <div class="hero-inner">
+      <div class="logo">
+        <img src="https://dekoroleta.com/wp-content/uploads/2025/05/PRINCIPAL-1024x572.png"
+             alt="Deko Roleta"
+             fetchpriority="high" decoding="async" />
+      </div>
 
-    <!-- Botão CTA Telegram -->
-    <div class="cta-wrapper">
+      <h1 class="headline">
+        P2: A Estratégia que está colocando de
+        <span class="price">R$ 500 a R$ 1.000</span>
+        todos os dias no meu bolso!
+      </h1>
+
       <a class="cta" href="https://t.me/+DTLDm5RKSGgyYzVh">
         <svg aria-hidden="true" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg">
           <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z"></path>
         </svg>
-        <span>ACESSAR GRUPO</span>
+        <span>Acessar Grupo</span>
       </a>
     </div>
   </section>
